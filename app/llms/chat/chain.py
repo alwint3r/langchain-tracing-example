@@ -1,8 +1,9 @@
-from app.llms.chat_openai import get_model_default
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import START, MessagesState, StateGraph
 
-_model = get_model_default()
+from app.llms.models import get_model_from_env
+
+_model = get_model_from_env()
 _workflow = StateGraph(state_schema=MessagesState)
 
 
