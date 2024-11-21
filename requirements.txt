@@ -40,6 +40,9 @@ multidict==6.1.0
 mypy-extensions==1.0.0
 numpy==1.26.4
 openai==1.54.5
+openinference-instrumentation==0.1.18
+openinference-instrumentation-langchain==0.1.29
+openinference-semantic-conventions==0.1.12
 opentelemetry-api==1.28.2
 opentelemetry-exporter-otlp-proto-common==1.28.2
 opentelemetry-exporter-otlp-proto-http==1.28.2

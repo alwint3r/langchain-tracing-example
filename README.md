@@ -23,6 +23,8 @@ LITELLM_API_KEY=XXXXXXXXXXXXXX
 LITELLM_MODEL_NAME=gpt-4o-mini
 
 MODEL_PROVIDER=azure_openai
+
+INSTRUMENT_LANGCHAIN="false"
 ```
 
 Choose between `azure_openai` and `litellm` for the `MODEL_PROVIDER` variable.

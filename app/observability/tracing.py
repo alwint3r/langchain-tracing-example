@@ -4,6 +4,8 @@ from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
+from openinference.instrumentation.langchain import LangChainInstrumentor
+import os
 
 
 def setup_tracing(service_name: str, otlp_endpoint: str):
@@ -17,6 +19,9 @@ def setup_tracing(service_name: str, otlp_endpoint: str):
     )
 
     trace.get_tracer_provider().add_span_processor(BatchSpanProcessor(jaeger_exporter))
+
+    if os.environ.get("INSTRUMENT_LANGCHAIN", "false").lower() == "true":
+        LangChainInstrumentor().instrument()
 
     return tracer_provider
 
