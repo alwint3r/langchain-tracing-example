@@ -8,9 +8,11 @@ from opentelemetry import trace
 from .observability.tracing import setup_tracing, instrument_app
 from .llms.chat.route import router as chat_router
 from .llms.agent.route import router as agent_router
+import os
 
-service_name = "langchain-tracing-example"
-tracer_provider = setup_tracing(service_name, "http://localhost:4318/v1/traces")
+service_name = os.environ["APP_NAME"]
+otlp_span_exporter_endpoint = os.environ["OTLP_SPAN_EXPORTER_ENDPOINT"]
+tracer_provider = setup_tracing(service_name, otlp_span_exporter_endpoint)
 
 app = FastAPI()
 instrument_app(app, tracer_provider)

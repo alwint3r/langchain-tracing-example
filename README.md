@@ -7,6 +7,8 @@ This repo contains an example of tracing in a LLM chatbot/agent app using OpenTe
 Create a `.env` file in the root of the project with the following content:
 
 ```shell
+APP_NAME=langchain-tracing-example
+
 AZURE_OPENAI_API_KEY=XXXXXXXXXXXXXX
 AZURE_OPENAI_API_BASE=https://XXXXXXXXXXXXXXX/
 AZURE_OPENAI_API_VERSION=2023-05-15
@@ -25,6 +27,7 @@ LITELLM_MODEL_NAME=gpt-4o-mini
 MODEL_PROVIDER=azure_openai
 
 INSTRUMENT_LANGCHAIN="false"
+OTLP_SPAN_EXPORTER_ENDPOINT="http://localhost:4318/v1/traces"
 ```
 
 Choose between `azure_openai` and `litellm` for the `MODEL_PROVIDER` variable.
